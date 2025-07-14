@@ -1,4 +1,5 @@
 local navic = require("nvim-navic")
+local root = require("root")
 local config = require("barbecue.config")
 local theme = require("barbecue.theme")
 local Entry = require("barbecue.ui.entry")
@@ -15,8 +16,21 @@ function M.dirname(bufnr)
   if not config.user.show_dirname then return {} end
 
   local filename = vim.api.nvim_buf_get_name(bufnr)
-  local dirname =
-    vim.fn.fnamemodify(filename, config.user.modifiers.dirname .. ":h")
+  local root_dir = root.get()
+  local dirname = ""
+  -- if filename starts with root, then remove the root part and the filename
+  if filename:find(root_dir, 1, true) == 1 then
+    -- e.g. `lua/plugins/root.nvim.lua`
+    local relative_filename = filename:sub(#root_dir + 1):gsub("^/", "")
+    -- e.g. `root.nvim.lua`
+    local basename = vim.fn.fnamemodify(filename, ":t")
+
+    -- e.g. `lua/plugins/`
+    dirname = relative_filename:sub(1, -(#basename + 1))
+  else
+    dirname =
+      vim.fn.fnamemodify(filename, config.user.modifiers.dirname .. ":h")
+  end
 
   ---@type barbecue.Entry[]
   local entries = {}

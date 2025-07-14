@@ -47,6 +47,7 @@ https://user-images.githubusercontent.com/37078297/215765075-bc89050e-ad74-481a-
     version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
+      "flashios09/root.nvim",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     opts = {
