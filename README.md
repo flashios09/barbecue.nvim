@@ -28,10 +28,13 @@ https://user-images.githubusercontent.com/37078297/215765075-bc89050e-ad74-481a-
 
 - [nvim-navic][nvim-navic]: LSP `textDocument/documentSymbol` provider.
 
+- [root-nvim][root-nvim]: Get the project **root path**.
+
 - [nvim-web-devicons][nvim-web-devicons]: File icon provider. _(optional)_
 
 [neovim-latest]: https://github.com/neovim/neovim/releases/latest
 [nvim-navic]: https://github.com/SmiteshP/nvim-navic
+[root-nvim]: https://github.com/flashios09/root.nvim
 [nvim-web-devicons]: https://github.com/nvim-tree/nvim-web-devicons
 
 ## 📦 Installation
@@ -64,6 +67,7 @@ https://user-images.githubusercontent.com/37078297/215765075-bc89050e-ad74-481a-
     tag = "*",
     requires = {
       "SmiteshP/nvim-navic",
+      "flashios09/root.nvim",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     after = "nvim-web-devicons", -- keep this if you're using NvChad
